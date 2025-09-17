@@ -1,0 +1,18 @@
+numpy
+pandas
+pyarrow
+polars          # fast dataset loading
+requests
+scikit-learn
+scipy
+seaborn         # figure generation
+kagglehub       # loading datasets from kaggle
+xgboost         # GBDT model
+matplotlib
+cleanlab        # OOS prediction based label error detection
+xlrd
+openpyxl
+pymc
+arviz
+ipykernel
+ipywidgets
