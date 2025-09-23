@@ -21,9 +21,8 @@ ALL_DATASETS = [
     "sensorless_drive",
     "cardiotocography",
     "credit_card_fraud",
+    "balanced_credit_card_fraud",
     "human_activity_recognition",
-]
-MNIST_DATASETS = [
     "mnist",
     "fashion_mnist",
 ]
@@ -341,6 +340,11 @@ DOWNLOADER_MAP = {
     "human_activity_recognition": download_human_activity_recognition,
 }
 
+assert (
+    set(GENERATOR_MAP.keys()).union(set(DOWNLOADER_MAP.keys())) 
+    == set(ALL_DATASETS)
+), "GENERATOR_MAP and DOWNLOADER_MAP must cover ALL_DATASETS"
+
 
 def load_dataset(
         name: str, 
@@ -373,7 +377,7 @@ def load_dataset(
     df : pd.DataFrame
         The dataset. The target variable is named "label" and is integer-encoded.
     """
-    assert name in ALL_DATASETS + MNIST_DATASETS, f"Unknown dataset: {name}"
+    assert name in ALL_DATASETS, f"Unknown dataset: {name}"
 
     # Ensure the save_dir exists
     if save_dir is not None:
