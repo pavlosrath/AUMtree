@@ -6,7 +6,7 @@ from tqdm import tqdm
 from copy import deepcopy
 from multiprocessing import Pool, cpu_count
 
-from src.data import load_dataset, ALL_DATASETS, SLOW_DATASETS
+from src.data import load_dataset, SLOW_DATASETS
 from src.experiments import label_error_detection_trial
 from src.utils import create_folder, StoreStringList, StoreFloatList
 
@@ -21,11 +21,6 @@ def _main_function_label_error_exp(
         save_dir: str,
         seed: int
     ) -> pd.DataFrame:
-
-    # Check if the datasets are valid
-    for ds_name in datasets:
-        if ds_name not in ALL_DATASETS:
-            raise ValueError(f'Unknown dataset: {ds_name}')
         
     # Download the datasets now to avoid concurrency issues
     for ds_name in datasets:
