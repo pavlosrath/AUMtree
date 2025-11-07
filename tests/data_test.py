@@ -1,7 +1,7 @@
 import os
 import unittest
 import numpy as np
-from src.data import load_dataset, ALL_DATASETS
+from src.data import load_dataset, ALL_DATASETS, GENERATOR_MAP, DOWNLOADER_MAP
 
 
 class TestData(unittest.TestCase):
@@ -43,7 +43,7 @@ class TestData(unittest.TestCase):
 
     def test_save_datasets(self):
         save_dir = "./tmp"
-        for name in set(ALL_DATASETS) - set(["spirals"]):
+        for name in set(ALL_DATASETS) - set(list(GENERATOR_MAP.keys())):
             load_dataset(name, save_dir)
             self.assertTrue(
                 os.path.exists(f"{save_dir}/{name}.csv"), 

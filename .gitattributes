@@ -1,0 +1,1 @@
+*.ipynb linguist-vendored # Prevent Jupyter notebooks from being counted as code
